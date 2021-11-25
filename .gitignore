@@ -4,5 +4,6 @@
 __pycache__/
 local_settings.py
 db.conf
+django.conf
 media
 venv/
