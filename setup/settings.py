@@ -11,16 +11,16 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-from configobj import ConfigObj
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DJANGO_CONF_FILE = f'{BASE_DIR}/django.conf'
-DJANGO_CONFIG = ConfigObj(DJANGO_CONF_FILE)
-
-SECRET_KEY = DJANGO_CONFIG['DJANGO_SECRET']
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -75,17 +75,13 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DB_CONF_FILE = f'{BASE_DIR}/db.conf'
-
-DB_CONFIG = ConfigObj(DB_CONF_FILE)
-
 # Database connection parameters
-DB_HOST = DB_CONFIG['DB_HOST']
-DB_NAME = DB_CONFIG['DB_NAME']
-DB_USER = DB_CONFIG['DB_USER']
-DB_PASSWORD = DB_CONFIG['DB_PASSWORD']
-DB_PORT = DB_CONFIG['DB_PORT']
-DB_OPTIONS = DB_CONFIG['DB_OPTIONS']
+DB_HOST = env('DB_HOST')
+DB_NAME = env('DB_NAME')
+DB_USER = env('DB_USER')
+DB_PASSWORD = env('DB_PASSWORD')
+DB_PORT = env('DB_PORT')
+DB_OPTIONS = env('DB_OPTIONS')
 
 DATABASES = {
     'default': {
@@ -143,3 +139,8 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
