@@ -26,7 +26,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ['0.0.0.0',
-                 'https://farma-usp.herokuapp.com',
+                 'farma-usp.herokuapp.com',
                  '127.0.0.1']
 
 
