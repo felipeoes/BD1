@@ -9,6 +9,16 @@ router.register('clientes', ClientesViewSet, basename='Clientes')
 router.register('clientes-telefones', ClientesTelefonesViewSet, basename='ClientesTelefones')
 router.register('programa-beneficios', ProgramasBeneficiosViewSet, basename='ProgramaBeneficios')
 router.register('funcionarios', FuncionariosViewSet, basename='Funcionarios')
+router.register('funcionarios-telefones', FuncionariosTelefonesViewSet, basename='FuncionariosTelefones')
+router.register('turnos', TurnosViewSet, basename='Turnos')
+router.register('servicos', ServicosViewSet, basename='Servicos')
+router.register('servicos-realizados', ServicosRealizadosViewSet, basename='ServicosRealizados')
+router.register('compras', ComprasViewSet, basename='Compras')
+router.register('produtos', ProdutosViewSet, basename='Produtos')
+router.register('produtos-comprados', CompraProdutosViewSet, basename='ProdutosComprados')
+router.register('fornecedores', FornecedoresViewSet, basename='Fornecedores')
+router.register('fornecedores-telefones', FornecedoresTelefonesViewSet, basename='FornecedoresTelefones')
+router.register('solicitacoes-produtos', SolicitacoesProdutosViewSet, basename='SolicitacoesProdutos')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

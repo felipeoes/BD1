@@ -35,3 +35,73 @@ class FuncionariosViewSet(viewsets.ModelViewSet):
     serializer_class = FuncionarioSerializer
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
+
+class FuncionariosTelefonesViewSet(viewsets.ModelViewSet):
+    """Exibindo todos os telefones dos funcionarios"""
+    queryset = FuncionarioTelefones.objects.all()
+    serializer_class = FuncionariosTelefonesSerializer
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+    
+class TurnosViewSet(viewsets.ModelViewSet):
+    """Exibindo todos os turnos"""
+    queryset = Turno.objects.all()
+    serializer_class = TurnosSerializer
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+
+class ServicosViewSet(viewsets.ModelViewSet):
+    """Exibindo todos os servicos"""
+    queryset = Servico.objects.all()
+    serializer_class = ServicosSerializer
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+
+class ServicosRealizadosViewSet(viewsets.ModelViewSet):
+    """Exibindo todos os servicos realizados"""
+    queryset = ServicoRealizado.objects.all()
+    serializer_class = ServicosRealizadosSerializer
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+
+class ComprasViewSet(viewsets.ModelViewSet):
+    """Exibindo todas os compras"""
+    queryset = Compra.objects.all()
+    serializer_class = ComprasSerializer
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+    
+class ProdutosViewSet(viewsets.ModelViewSet):
+    """Exibindo todos os produtos"""
+    queryset = Produto.objects.all()
+    serializer_class = ProdutosSerializer
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+
+class CompraProdutosViewSet(viewsets.ModelViewSet):
+    """Exibindo todos os produtos de uma compra"""
+    queryset = CompraProduto.objects.all()
+    serializer_class = CompraProdutosSerializer
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+
+class FornecedoresViewSet(viewsets.ModelViewSet):
+    """Exibindo todos os fornecedores"""
+    queryset = Fornecedor.objects.all()
+    serializer_class = FornecedoresSerializer
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+
+class FornecedoresTelefonesViewSet(viewsets.ModelViewSet):
+    """Exibindo todos os telefones dos fornecedores"""
+    queryset = FornecedorTelefones.objects.all()
+    serializer_class = FornecedoresTelefonesSerializer
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+
+class SolicitacoesProdutosViewSet(viewsets.ModelViewSet):
+    """Exibindo todos as solicitações de produtos"""
+    queryset = SolicitacaoProduto.objects.all()
+    serializer_class = SolicitacoesProdutosSerializer
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]

@@ -63,7 +63,7 @@ class Funcionario(models.Model):
         return self.funcional
 
 class FuncionarioTelefones(models.Model):
-    funcional = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
+    funcional = models.ForeignKey(Funcionario, on_delete=models.CASCADE, db_column='funcional')
     telefone = models.CharField(max_length=11, primary_key=True)
     
     class Meta:
@@ -73,7 +73,7 @@ class FuncionarioTelefones(models.Model):
         return (self.funcional + self.telefone)
 
 class Turno(models.Model):
-    funcional = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
+    funcional = models.ForeignKey(Funcionario, on_delete=models.CASCADE, db_column='funcional')
     data_hora_entrada = models.DateField(primary_key=True)
     data_hora_saida = models.DateField()
     descricao = models.CharField(max_length=200, blank=True, null=True)
@@ -99,9 +99,9 @@ class Servico(models.Model):
 
 class ServicoRealizado(models.Model):
     codigo = models.CharField(max_length=10, primary_key=True)
-    id_servico = models.ForeignKey(Servico, on_delete=models.CASCADE)
-    cpf_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    num_func = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
+    id_servico = models.ForeignKey(Servico, on_delete=models.CASCADE, db_column='id_servico')
+    cpf_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, db_column='cpf_cliente')
+    num_func = models.ForeignKey(Funcionario, on_delete=models.CASCADE, db_column='num_func')
     data = models.DateField(blank=True, null=True)
     
     class Meta:
@@ -111,9 +111,9 @@ class ServicoRealizado(models.Model):
         return self.codigo
 
 class Compra(models.Model):
-    cpf_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    cpf_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, db_column='cpf_cliente')
     codigo_compra = models.CharField(max_length=9, primary_key=True)
-    num_func = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
+    num_func = models.ForeignKey(Funcionario, on_delete=models.CASCADE, db_column='num_func')
     total = models.FloatField(max_length=10)
     data = models.DateField(blank=True, null=True)
     forma_pagamento = models.CharField(max_length=16)
@@ -140,8 +140,8 @@ class Produto(models.Model):
 
 
 class CompraProduto(models.Model):
-    codigo_compra = models.ForeignKey(Compra, on_delete=models.CASCADE)
-    codigo_barras = models.ForeignKey(Produto, on_delete=models.CASCADE)
+    codigo_compra = models.ForeignKey(Compra, on_delete=models.CASCADE, primary_key=True, db_column='codigo_compra')
+    codigo_barras = models.ForeignKey(Produto, on_delete=models.CASCADE, db_column='codigo_barras')
     quantidade = models.IntegerField()
     
     
@@ -164,7 +164,7 @@ class Fornecedor(models.Model):
         return self.cnpj
 
 class FornecedorTelefones(models.Model):
-    cnpj_forn = models.ForeignKey(Fornecedor, on_delete=models.CASCADE)
+    cnpj_forn = models.ForeignKey(Fornecedor, on_delete=models.CASCADE, db_column='cnpj_forn')
     telefone = models.CharField(max_length=11, primary_key=True)
     
     class Meta:
@@ -174,10 +174,10 @@ class FornecedorTelefones(models.Model):
         return (self.cnpj_forn + self.telefone)
     
 class SolicitacaoProduto(models.Model):
-    num_func = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
-    numero_pedido = models.CharField(max_length=10, primary_key=True)
-    codigo_barras = models.ForeignKey(Produto, on_delete=models.CASCADE)    
-    cnpj_forn = models.ForeignKey(Fornecedor, on_delete=models.CASCADE)
+    num_func = models.ForeignKey(Funcionario, on_delete=models.CASCADE, db_column='num_func')
+    numero_pedido = models.CharField(max_length=10, primary_key=True, db_column='numero_pedido')
+    codigo_barras = models.ForeignKey(Produto, on_delete=models.CASCADE, db_column='codigo_barras')    
+    cnpj_forn = models.ForeignKey(Fornecedor, on_delete=models.CASCADE, db_column='cnpj_forn')
     quantidade = models.IntegerField()
     data_de_validade = models.DateField()
     data_solicitacao = models.DateField()
