@@ -9,8 +9,8 @@ class ClientesViewSet(viewsets.ModelViewSet):
     """Exibindo todos os clientes"""
     queryset = Cliente.objects.all()
     serializer_class = ClienteSerializer
-    authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [BasicAuthentication]
+    # permission_classes = [IsAuthenticated]
 
 
 class ClientesTelefonesViewSet(viewsets.ModelViewSet):

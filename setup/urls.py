@@ -23,4 +23,5 @@ router.register('solicitacoes-produtos', SolicitacoesProdutosViewSet, basename='
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls) ),
+    path('api/v1/usuarios/', include('users.urls')),
 ]

@@ -175,8 +175,8 @@ class FornecedorTelefones(models.Model):
     
 class SolicitacaoProduto(models.Model):
     num_func = models.ForeignKey(Funcionario, on_delete=models.CASCADE, db_column='num_func')
-    numero_pedido = models.CharField(max_length=10, primary_key=True, db_column='numero_pedido')
-    codigo_barras = models.ForeignKey(Produto, on_delete=models.CASCADE, db_column='codigo_barras')    
+    numero_pedido = models.CharField(max_length=10, primary_key=True)
+    codigo_barras = models.ForeignKey(Produto, on_delete=models.CASCADE, db_column='codigo_barras') 
     cnpj_forn = models.ForeignKey(Fornecedor, on_delete=models.CASCADE, db_column='cnpj_forn')
     quantidade = models.IntegerField()
     data_de_validade = models.DateField()
