@@ -21,7 +21,7 @@ router.register('fornecedores-telefones', FornecedoresTelefonesViewSet, basename
 router.register('solicitacoes-produtos', SolicitacoesProdutosViewSet, basename='SolicitacoesProdutos')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('', include(router.urls) ),
     path('api/v1/usuarios/', include('users.urls')),
 ]
