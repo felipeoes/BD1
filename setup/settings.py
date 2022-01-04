@@ -17,7 +17,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['0.0.0.0',
                  'localhost',
                  'farma-usp.herokuapp.com',
-                 'frontbd.vercel.app'
+                 'frontbd.vercel.app',
                  '127.0.0.1']
 
 CORS_ALLOWED_ORIGINS = [
