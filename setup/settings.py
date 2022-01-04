@@ -153,6 +153,12 @@ REST_FRAMEWORK = {
 # CONFIG DE AUTENTICACAO
 AUTH_USER_MODEL = 'users.Usuario'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_ADAPTER = 'users.adapter.CustomAccountAdapter'
+
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'users.serializers.CustomRegisterSerializer',
+}
 
 AUTHENTICATION_BACKENDS = ("django.contrib.auth.backends.ModelBackend",
                            "allauth.account.auth_backends.AuthenticationBackend",
