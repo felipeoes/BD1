@@ -14,20 +14,23 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0',
-                 'localhost',
-                 'farma-usp.herokuapp.com',
-                 'frontbd.vercel.app',
-                 '127.0.0.1']
+# ALLOWED_HOSTS = ['0.0.0.0',
+#                  'localhost',
+#                  'farma-usp.herokuapp.com',
+#                  'frontbd.vercel.app',
+#                  '127.0.0.1']
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost',
-    'https://farma-usp.herokuapp.com',
-    'https://frontbd.vercel.app'
-]
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost',
+#     'https://farma-usp.herokuapp.com',
+#     'https://frontbd.vercel.app'
+# ]
 
-CORS_ORIGIN_WHITELIST = ( 'http://localhost', 'https://frontbd.vercel.app', 'https://farma-usp.herokuapp.com',)
+# CORS_ORIGIN_WHITELIST = ( 'http://localhost', 'https://frontbd.vercel.app', 'https://farma-usp.herokuapp.com',)
 
+ALLOWED_HOSTS=['*']
+
+CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
 INSTALLED_APPS = [
