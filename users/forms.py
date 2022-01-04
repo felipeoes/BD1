@@ -5,7 +5,7 @@ from .models import Usuario
 class CustomUserCreationForm(UserCreationForm):    
     class Meta:        
         model = Usuario        
-        fields = ('email', 'funcional',)  
+        fields = ('email', 'funcional', 'last_login', 'date_joined', 'is_staff', 'first_name', 'last_name',)  
         
 class CustomUserChangeForm(UserChangeForm):    
     class Meta:        
