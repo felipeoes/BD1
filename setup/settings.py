@@ -26,6 +26,8 @@ CORS_ALLOWED_ORIGINS = [
     'https://frontbd.vercel.app'
 ]
 
+CORS_ORIGIN_WHITELIST = ( 'http://localhost', 'https://frontbd.vercel.app', 'https://farma-usp.herokuapp.com',)
+
 # Application definition
 
 INSTALLED_APPS = [
