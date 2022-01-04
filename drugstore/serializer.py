@@ -82,6 +82,7 @@ class ProdutosSerializer(serializers.ModelSerializer):
         return data
 
 class CompraProdutosSerializer(serializers.ModelSerializer):
+    nome_produto = serializers.ReadOnlyField(source='produto.codigo_barras')
     class Meta:
         model = CompraProduto
         fields = '__all__'

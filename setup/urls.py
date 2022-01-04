@@ -19,6 +19,10 @@ router.register('produtos-comprados', CompraProdutosViewSet, basename='ProdutosC
 router.register('fornecedores', FornecedoresViewSet, basename='Fornecedores')
 router.register('fornecedores-telefones', FornecedoresTelefonesViewSet, basename='FornecedoresTelefones')
 router.register('solicitacoes-produtos', SolicitacoesProdutosViewSet, basename='SolicitacoesProdutos')
+router.register('top5-produtos', Top5ProdutosViewSet, basename='Top5Produtos')
+router.register('top5-fornecedores', Top5FornecedoresViewSet, basename='Top5Fornecedores')
+router.register('top5-funcionarios', Top5FuncionariosViewSet, basename='Top5Funcionarios')
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),

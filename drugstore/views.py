@@ -3,7 +3,8 @@ from .models import Cliente
 from .serializer import *
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
-
+from django.db.models import Count
+from rest_framework.filters import SearchFilter, OrderingFilter
 
 class ClientesViewSet(viewsets.ModelViewSet):
     """Exibindo todos os clientes"""
@@ -103,5 +104,28 @@ class SolicitacoesProdutosViewSet(viewsets.ModelViewSet):
     """Exibindo todos as solicitações de produtos"""
     queryset = SolicitacaoProduto.objects.all()
     serializer_class = SolicitacoesProdutosSerializer
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+    
+
+class Top5ProdutosViewSet(viewsets.ModelViewSet):
+    """Exibindo os 5 produtos mais vendidos"""
+    queryset = CompraProduto.objects.all().order_by('-quantidade')[:5]
+    serializer_class = CompraProdutosSerializer
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+    
+
+class Top5FornecedoresViewSet(viewsets.ModelViewSet):
+    """Exibindo os 5 fornecedores que mais solicitamos produtos"""
+    queryset = SolicitacaoProduto.objects.annotate(qtde_forn=Count('cnpj_forn')).order_by('-valor_total')[:5]
+    serializer_class = SolicitacoesProdutosSerializer
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+    
+class Top5FuncionariosViewSet(viewsets.ModelViewSet):
+    """Exibindo os 5 funcionarios que mais venderam"""
+    queryset = Compra.objects.annotate(qtde_vendas=Count('num_func')).order_by('-qtde_vendas')[:5]
+    serializer_class = ComprasSerializer
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
