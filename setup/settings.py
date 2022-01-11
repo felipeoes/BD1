@@ -1,6 +1,7 @@
 from pathlib import Path
 import environ
 import django_heroku
+import os
 
 env = environ.Env()
 environ.Env.read_env()
@@ -137,6 +138,11 @@ USE_TZ = True
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
+
+#MEDIA AND FILES
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = '/static/'
@@ -157,7 +163,7 @@ ACCOUNT_ADAPTER = 'users.adapter.CustomAccountAdapter'
 
 
 REST_AUTH_REGISTER_SERIALIZERS = {
-    'REGISTER_SERIALIZER': 'users.serializers.CustomRegisterSerializer',
+    'REGISTER_SERIALIZER': 'users.serializers.UserRegistrationSerializer',
 }
 
 AUTHENTICATION_BACKENDS = ("django.contrib.auth.backends.ModelBackend",

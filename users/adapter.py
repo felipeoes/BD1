@@ -9,5 +9,6 @@ class CustomAccountAdapter(DefaultAccountAdapter):
         user.first_name = data.get('first_name')
         user.last_name = data.get('last_name')
         user.funcional = data.get('funcional')
+        user.profile_image = data.get('profile_image')
         user.save()
         return user
